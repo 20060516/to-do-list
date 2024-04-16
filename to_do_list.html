@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightsalmon; /* Set background color to light salmon */
+            color: #fff; /* Set default text color to white */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #000; /* Change heading color to black */
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.8); /* Background color with opacity */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        span.task-time {
+            float: right;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1><I><B>To-Do List</B></I></h1>
+    
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <input type="date" id="taskDate">
+    <input type="time" id="taskTime">
+    <button onclick="addTask()">Add Task</button>
+    
+    <ul id="taskList">
+        <!-- Tasks will be dynamically added here -->
+    </ul>
+    
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskText = taskInput.value.trim();
+            var taskDate = document.getElementById("taskDate").value;
+            var taskTime = document.getElementById("taskTime").value;
+            
+            if (taskText !== "") {
+                var taskList = document.getElementById("taskList");
+                var listItem = document.createElement("li");
+                listItem.innerHTML = taskText + " <span class='task-time'>" + taskDate + " " + taskTime + "</span>";
+                taskList.appendChild(listItem);
+                taskInput.value = "";
+                document.getElementById("taskDate").value = "";
+                document.getElementById("taskTime").value = "";
+            } else {
+                alert("Please enter a task.");
+            }
+        }
+    </script>
+</body>
+</html>
